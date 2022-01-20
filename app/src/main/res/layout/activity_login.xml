@@ -93,16 +93,17 @@
         android:layout_below="@+id/forgotpass"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="31dp"
-        android:textSize="15dp"
+        android:text="Don't have an account?Register"
+        android:textStyle="bold"
         android:textColor="@color/white"
-        android:text="Don't have an account?Register" />
+        android:textSize="18dp" />
 
     <TextView
         android:id="@+id/others"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@id/socialicons"
-
+        android:textStyle="bold"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="109dp"
         android:text="or sign in with"
@@ -114,6 +115,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/socialicons"
+
         android:layout_alignParentBottom="true"
         android:gravity="center">
 

@@ -70,7 +70,7 @@
         android:drawableLeft="@drawable/ic_baseline_contacts_24"
         android:drawablePadding="20dp"
         android:hint="Contact Number"
-        android:inputType="textEmailAddress"
+        android:inputType="phone"
         android:padding="20dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white" />
@@ -126,6 +126,16 @@
         android:textSize="18sp"
         android:backgroundTint="@color/design_default_color_secondary"
         android:text="Register" />
+    <TextView
+        android:id="@+id/loginscreen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:layout_gravity="center"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:text="Already have an account?Login"/>
 
 
 </LinearLayout>
