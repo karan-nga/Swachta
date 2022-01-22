@@ -15,10 +15,11 @@
         android:layout_marginTop="50dp"
         android:layout_marginEnd="50dp"
         android:layout_marginBottom="50dp"
+        android:fontFamily="@font/sourcesansprobold"
         android:gravity="center"
-        android:text="Login in"
+        android:text="Log in"
         android:textColor="@color/white"
-        android:textSize="35dp"
+        android:textSize="45dp"
         android:textStyle="bold" />
 
     <EditText
@@ -65,12 +66,13 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
+        android:fontFamily="@font/sourcesansproregular"
         android:layout_marginBottom="20dp"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textAllCaps="false"
         android:backgroundTint="@color/design_default_color_secondary"
-        android:text="Login"/>
+        android:text="Login"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/forgotpass"
@@ -80,11 +82,12 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
+        android:fontFamily="@font/sourcesansproregular"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
-        android:textSize="14dp"
         android:text="Forgot password?"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:textSize="14dp" />
 
 
     <TextView
@@ -92,11 +95,12 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/forgotpass"
         android:layout_centerHorizontal="true"
+        android:fontFamily="@font/sourcesansproregular"
         android:layout_marginTop="31dp"
         android:text="Don't have an account?Register"
-        android:textStyle="bold"
         android:textColor="@color/white"
-        android:textSize="18dp" />
+        android:textSize="18dp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/others"
@@ -104,6 +108,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/socialicons"
         android:textStyle="bold"
+        android:fontFamily="@font/sourcesansproregular"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="109dp"
         android:text="or sign in with"
