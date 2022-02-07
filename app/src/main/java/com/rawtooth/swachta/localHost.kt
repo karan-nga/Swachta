@@ -15,5 +15,5 @@ interface localHost {
     )
 
     @POST("/user")
-    fun sendUserData(@Body userPost:Post, @Header("Content-Length") length : Int ):Call<Post>
+    fun sendUserData(@Body userPost:RegisterPost, @Header("Content-Length") length : Int ):Call<RegisterPost>
 }

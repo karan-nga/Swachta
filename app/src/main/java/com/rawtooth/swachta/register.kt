@@ -13,14 +13,7 @@ import com.easyvolley.EasyVolleyError
 import com.easyvolley.EasyVolleyResponse
 import com.easyvolley.NetworkClient
 import com.rawtooth.swachta.databinding.ActivityRegisterBinding
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Call
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import com.google.gson.Gson
-import kotlin.properties.Delegates
 
 
 class register : AppCompatActivity(), View.OnClickListener {
@@ -44,8 +37,8 @@ class register : AppCompatActivity(), View.OnClickListener {
 
     private fun onSave(name: String, email: String, contact: String, pass: String) {
 
-        val body = Gson().toJson(Post(name,email,pass,contact))
-        NetworkClient.post("http://192.168.199.251:9090/user/")
+        val body = Gson().toJson(RegisterPost(name,email,pass,contact))
+        NetworkClient.post("http://192.168.1.95:9090/user/")
             .addHeader("Content-Type", "application/json")
             .addHeader("Content-Length", Integer.toString(body.length))
             .addHeader("Accept", "application/json")

@@ -1,4 +1,5 @@
 package com.rawtooth.swachta
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -9,6 +10,7 @@ import com.easyvolley.EasyVolleyResponse
 import com.easyvolley.NetworkClient
 import com.google.gson.Gson
 import com.rawtooth.swachta.databinding.ActivityLoginBinding
+import com.rawtooth.swachta.models.TokenResponse
 
 class Login : AppCompatActivity(), View.OnClickListener {
     lateinit var loginBinding:ActivityLoginBinding
@@ -28,21 +30,34 @@ class Login : AppCompatActivity(), View.OnClickListener {
     private fun onSave(name: String, password: String) {
 
 
-            val body = Gson().toJson(Post2(name,password))
-            NetworkClient.post("http://192.168.204.251:9090/generatetoken")
+            val body = Gson().toJson(LoginPost(name,password))
+            NetworkClient.post("http://192.168.0.145:9090/generatetoken")
                 .addHeader("Content-Type", "application/json")
                 .addHeader("Content-Length", Integer.toString(body.length))
                 .addHeader("Accept", "application/json")
                 .setRequestBody(body)
-                .setCallback(object : Callback<String> {
-                    override fun onSuccess(t: String?, response: EasyVolleyResponse?) {
-                        Log.d("code",  t.toString())
+                .setCallback(object : Callback<TokenResponse> {
+                    //                    override fun onSuccess(t: String?, response: EasyVolleyResponse?) {
+//                        Log.d("code",  response.toString())
+//                    }
+//
+//                    override fun onError(error: EasyVolleyError?) {
+//                        Log.e("code", " Error" + error!!.mStatusCode.toString())
+//                    };
+                    override fun onSuccess(t: TokenResponse?, response: EasyVolleyResponse?) {
+
+                        if (t != null) {
+                            Log.d("code",  t.toString())
+                           if(t.user.authorities.get(0).authority=="USER"){
+                               startActivity(Intent(this@Login,MainActivity::class.java))
+                           }
+                        }
+
                     }
 
                     override fun onError(error: EasyVolleyError?) {
                         Log.e("code", " Error" + error!!.mStatusCode.toString())
-                    };
-
+                    }
 
 
                 }

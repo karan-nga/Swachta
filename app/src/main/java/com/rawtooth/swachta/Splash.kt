@@ -14,11 +14,11 @@ class Splash : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         splashBinding= ActivitySplashBinding.inflate(layoutInflater)
         setContentView(splashBinding.root)
-        splashBinding.lottie.animate().translationY(1900f).setDuration(1000).setStartDelay(2300)
+        splashBinding.lottie.animate().translationY(0f).setDuration(3000)
         Handler().postDelayed({
             val intent= Intent(this,MainActivity::class.java)
             startActivity(intent)
             finish()
-        },3000)
+        },1000)
     }
 }
