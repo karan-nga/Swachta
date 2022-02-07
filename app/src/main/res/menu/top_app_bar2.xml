@@ -10,7 +10,6 @@
 
     <item
         android:onClick="login"
-
         android:icon="@drawable/login"
         android:title="Login" />
 

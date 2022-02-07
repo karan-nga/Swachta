@@ -1,5 +1,6 @@
 package com.rawtooth.swachta
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.util.Patterns
@@ -19,11 +20,14 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import com.google.gson.Gson
+import kotlin.properties.Delegates
 
 
 class register : AppCompatActivity(), View.OnClickListener {
-
+   var value:Int = 0
+    lateinit var response: EasyVolleyResponse
     lateinit var registerBind: ActivityRegisterBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         registerBind = ActivityRegisterBinding.inflate(layoutInflater)
@@ -41,19 +45,46 @@ class register : AppCompatActivity(), View.OnClickListener {
     private fun onSave(name: String, email: String, contact: String, pass: String) {
 
         val body = Gson().toJson(Post(name,email,pass,contact))
-        NetworkClient.post("http://192.168.254.251:9090/user/")
+        NetworkClient.post("http://192.168.199.251:9090/user/")
             .addHeader("Content-Type", "application/json")
             .addHeader("Content-Length", Integer.toString(body.length))
             .addHeader("Accept", "application/json")
             .setRequestBody(body)
             .setCallback(object : Callback<String> {
                 override fun onSuccess(t: String?, response: EasyVolleyResponse?) {
-                    Log.d("code",  t.toString());
-                }
+                    Log.d("code",  t.toString())
+                    if(response!=null){
+                    if(response.mStatusCode==200){
+              Toast.makeText(this@register,"Sucessfull",Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this@register,Login::class.java))
+            }
+            else if(response.mStatusCode==500){
+                Toast.makeText(this@register, "Your are already registered", Toast.LENGTH_SHORT).show()
+               startActivity(Intent(this@register,MainActivity::class.java))
+            }
+            else{
+                Toast.makeText(this@register, "Request Failed", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this@register,MainActivity::class.java))
+            }
+                        }
+
+
+
+
+                    }
 
                 override fun onError(error: EasyVolleyError?) {
-                    Log.e("code", " Error" + error?.mMessage);
-                }
+                    value=error!!.mStatusCode
+                        Log.e("code", " Error" + error!!.mStatusCode.toString())
+                    if(response.mStatusCode==500){
+                        Toast.makeText(this@register, "Your are already registered", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(this@register,MainActivity::class.java))
+                    }
+
+                    };
+
+
+
             }
             ).execute()
 
@@ -89,12 +120,26 @@ class register : AppCompatActivity(), View.OnClickListener {
         val confPass = registerBind.confpassword.text.toString()
         val check: Boolean = vali(name, email, contact, pass, confPass)
         if (check) {
-            Toast.makeText(applicationContext, "Data is valid", Toast.LENGTH_SHORT).show()
             onSave(name, email, contact, pass)
+            registerBind.loginscreen.text=value.toString()
+//            if(value==200){
+//                Toast.makeText(this, "Successfully registered", Toast.LENGTH_SHORT).show()
+//                startActivity(Intent(this,Login::class.java))
+//            }
+//            else if(value==500){
+//                Toast.makeText(this, "Your are already registered", Toast.LENGTH_SHORT).show()
+//                startActivity(Intent(this,Login::class.java))
+//            }
+//            else{
+//                Toast.makeText(this, "Request Failed", Toast.LENGTH_SHORT).show()
+//                startActivity(Intent(this,MainActivity::class.java))
+//            }
+
 
         } else {
-            Toast.makeText(applicationContext, "Enter valid data", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Enter valid data", Toast.LENGTH_SHORT).show()
         }
+
     }
 
     private fun vali(

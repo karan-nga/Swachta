@@ -8,31 +8,51 @@
     android:backgroundTint="@color/white"
     android:id="@+id/mainDrawer"
     tools:context=".MainActivity">
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:background="@color/white"
-    android:layout_height="match_parent">
 
-    <com.google.android.material.appbar.AppBarLayout
-
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        android:background="@color/white">
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/topAppBar"
-            style="@style/Widget.MaterialComponents.Toolbar.Primary"
+        <com.google.android.material.appbar.AppBarLayout
+
+            android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:menu="@menu/top_app_bar2"
-            app:navigationIcon="@drawable/menu"
-            app:title="@string/app_name" />
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    </com.google.android.material.appbar.AppBarLayout>
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/topAppBar"
+                style="@style/Widget.MaterialComponents.Toolbar.Primary"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:menu="@menu/top_app_bar2"
+                app:navigationIcon="@drawable/menu"
+                app:title="@string/app_name" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+        <com.synnapps.carouselview.CarouselView
+            android:id="@+id/carouselView"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            app:fillColor="#FFFFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/text1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+            app:pageColor="#00000000"
+            app:radius="6dp"
+            app:slideInterval="3000"
+            app:strokeColor="#FF777777"
+            app:strokeWidth="1dp" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
         android:clickable="true"
@@ -41,9 +61,4 @@
         app:headerLayout="@layout/header"
         app:menu="@menu/top_app_bar"
         android:layout_height="match_parent"/>
-
-
-
-
-
 </androidx.drawerlayout.widget.DrawerLayout>
