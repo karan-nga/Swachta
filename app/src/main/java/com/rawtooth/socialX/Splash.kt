@@ -1,11 +1,12 @@
-package com.rawtooth.swachta
+package com.rawtooth.socialX
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import com.airbnb.lottie.LottieAnimationView
-import com.rawtooth.swachta.databinding.ActivitySplashBinding
+
+import socialX.databinding.ActivitySplashBinding
 
 class Splash : AppCompatActivity() {
     lateinit var lottie : LottieAnimationView
@@ -14,7 +15,7 @@ class Splash : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         splashBinding= ActivitySplashBinding.inflate(layoutInflater)
         setContentView(splashBinding.root)
-        splashBinding.lottie.animate().translationY(1900f).setDuration(1000).setStartDelay(2300)
+        splashBinding.lottie.animate().translationY(0f).setDuration(1000).setStartDelay(2500)
         Handler().postDelayed({
             val intent= Intent(this,MainActivity::class.java)
             startActivity(intent)

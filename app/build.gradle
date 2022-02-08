@@ -1,14 +1,15 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id  'kotlin-parcelize'
 }
 
 android {
     compileSdk 31
 
     defaultConfig {
-        applicationId "com.rawtooth.swachta"
-        minSdk 19
+        applicationId "com.rawtooth.socialX"
+        minSdk 21
         targetSdk 31
         versionCode 1
         versionName "1.0"
@@ -29,12 +30,13 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    viewBinding {
-        enabled = true
+    buildFeatures {
+        viewBinding = true
     }
 }
 
 dependencies {
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     def lottieVersion = "3.4.0"
     implementation "com.airbnb.android:lottie:$lottieVersion"
     implementation 'com.google.android.material:material:1.5.0'

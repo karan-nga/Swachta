@@ -1,4 +1,4 @@
-package com.rawtooth.swachta
+package com.rawtooth.socialX
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,14 +7,15 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import com.easyvolley.NetworkClient
-import com.rawtooth.swachta.databinding.ActivityMainBinding
 import com.synnapps.carouselview.CarouselView
 import com.synnapps.carouselview.ImageListener
+import socialX.R
+import socialX.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
     lateinit var toggle:ActionBarDrawerToggle
-    lateinit var mainBinding:ActivityMainBinding
+    lateinit var mainBinding: ActivityMainBinding
     var imageArray:ArrayList<Int> = ArrayList()
     var carsualView:CarouselView? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,12 +30,12 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         NetworkClient.init(application)
         imageArray.add(R.drawable.img3)
-        imageArray.add(R.drawable.recycle)
-        imageArray.add(R.drawable.navigationimg)
+        imageArray.add(R.drawable.img1)
+        imageArray.add(R.drawable.img2)
         imageArray.add(R.drawable.img4)
-        imageArray.add(R.drawable.img5)
-        imageArray.add(R.drawable.img6)
-        imageArray.add(R.drawable.img7)
+        imageArray.add(R.drawable.img10)
+
+
 
         carsualView=mainBinding.carouselView
         carsualView!!.pageCount=imageArray.size
@@ -44,6 +45,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.top_app_bar2,menu)
+
         return super.onCreateOptionsMenu(menu)
     }
 
@@ -54,10 +56,11 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
     fun register(menuItem: MenuItem){
-        startActivity(Intent(this,register::class.java))
+        startActivity(Intent(this,in_up::class.java))
     }
     fun login(menuItem: MenuItem){
-        startActivity(Intent(this,Login::class.java))
+        startActivity(Intent(this,in_up::class.java))
     }
+
 
 }

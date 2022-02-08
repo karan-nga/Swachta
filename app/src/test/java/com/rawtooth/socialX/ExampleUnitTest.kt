@@ -1,4 +1,4 @@
-package com.rawtooth.swachta
+package com.rawtooth.socialX
 
 import org.junit.Test
 

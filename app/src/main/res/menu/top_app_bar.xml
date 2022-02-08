@@ -5,14 +5,12 @@
 
     <item
         android:onClick="register"
-        android:icon="@drawable/register"
         android:title="Register"
-        app:showAsAction="ifRoom|collapseActionView"/>
+        android:icon="@drawable/adduser"/>
 
     <item
+        android:icon="@drawable/user"
         android:onClick="login"
-
-        android:icon="@drawable/login"
         android:title="Login" />
 
 

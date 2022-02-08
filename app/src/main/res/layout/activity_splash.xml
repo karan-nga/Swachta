@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="#2abb9b"
-    android:background="#EBEFF3"
+    android:backgroundTint="@color/white"
     tools:context=".Splash">
 
     <TextView
@@ -15,7 +14,7 @@
         android:layout_margin="10dp"
         android:fontFamily="@font/sourcesansprobold"
         android:text="@string/app_name"
-        android:textColor="#EFEAEA"
+        android:textColor="#0E0E0E"
         android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

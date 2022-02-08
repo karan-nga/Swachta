@@ -1,4 +1,4 @@
-package com.rawtooth.swachta
+package com.rawtooth.socialX
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
