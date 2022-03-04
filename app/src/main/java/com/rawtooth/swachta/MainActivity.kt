@@ -8,6 +8,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import com.easyvolley.NetworkClient
 import com.rawtooth.swachta.databinding.ActivityMainBinding
+import com.rawtooth.swachta.user.user_detail
 import com.synnapps.carouselview.CarouselView
 import com.synnapps.carouselview.ImageListener
 
@@ -42,10 +43,7 @@ class MainActivity : AppCompatActivity() {
     }
     var imageListner=ImageListener{position, imageView -> imageView.setImageResource(imageArray[position]) }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.top_app_bar2,menu)
-        return super.onCreateOptionsMenu(menu)
-    }
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(toggle.onOptionsItemSelected(item)){
@@ -58,6 +56,12 @@ class MainActivity : AppCompatActivity() {
     }
     fun login(menuItem: MenuItem){
         startActivity(Intent(this,Login::class.java))
+    }
+    fun home(menuItem: MenuItem){
+        startActivity(Intent(this,MainActivity::class.java))
+    }
+    fun user(menuItem: MenuItem){
+        startActivity(Intent(this,user_detail::class.java))
     }
 
 }

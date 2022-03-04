@@ -1,6 +1,6 @@
 package com.rawtooth.swachta
 
-data class Post(
+data class RegisterPost(
     val username:String,
     val email:String,
     val password:String,

@@ -11,8 +11,16 @@ import com.easyvolley.NetworkClient
 import com.google.gson.Gson
 import com.rawtooth.swachta.databinding.ActivityLoginBinding
 import com.rawtooth.swachta.models.TokenResponse
+import com.rawtooth.swachta.roomdb.User
+import com.rawtooth.swachta.roomdb.UserDatabase
+import com.rawtooth.swachta.user.details
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+
 
 class Login : AppCompatActivity(), View.OnClickListener {
+
     lateinit var loginBinding:ActivityLoginBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,8 +56,17 @@ class Login : AppCompatActivity(), View.OnClickListener {
 
                         if (t != null) {
                             Log.d("code",  t.toString())
+
                            if(t.user.authorities.get(0).authority=="USER"){
                                startActivity(Intent(this@Login,MainActivity::class.java))
+
+                               val obj=details(t.user.username,t.user.email,t.user.phonenumber)
+                               val userInfo = User(null,obj.name,obj.number,obj.email)
+                               GlobalScope.launch(Dispatchers.IO){
+                                   UserDatabase.getInstance(applicationContext).userDao().insert(userInfo)
+                               }
+
+
                            }
                         }
 
