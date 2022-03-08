@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import com.easyvolley.Callback
 import com.easyvolley.EasyVolleyError
 import com.easyvolley.EasyVolleyResponse
@@ -57,7 +58,7 @@ class Login : AppCompatActivity(), View.OnClickListener {
                         if (t != null) {
                             Log.d("code",  t.toString())
 
-                           if(t.user.authorities.get(0).authority=="USER"){
+                           if(t.user.authorities[0].authority=="USER"){
                                startActivity(Intent(this@Login,MainActivity::class.java))
 
                                val obj=details(t.user.username,t.user.email,t.user.phonenumber)
@@ -68,12 +69,17 @@ class Login : AppCompatActivity(), View.OnClickListener {
 
 
                            }
+
+
                         }
 
                     }
 
                     override fun onError(error: EasyVolleyError?) {
                         Log.e("code", " Error" + error!!.mStatusCode.toString())
+                        if(error.mStatusCode==500){
+                            Toast.makeText(this@Login,"Invalid username and password please try again!",Toast.LENGTH_SHORT).show()
+                        }
                     }
 
 
