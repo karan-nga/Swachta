@@ -22,6 +22,14 @@
         <entry key="..\:/Users/Karan/AndroidStudioProjects/wastemanagement/app/src/main/res/menu/nav_menu.xml" value="0.25" />
         <entry key="..\:/Users/Karan/AndroidStudioProjects/wastemanagement/app/src/main/res/menu/top_app_bar.xml" value="0.25" />
         <entry key="..\:/Users/Karan/AndroidStudioProjects/wastemanagement/app/src/main/res/menu/top_app_bar2.xml" value="0.25" />
+        <entry key="app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.246" />
+        <entry key="app/src/main/res/layout/activity_admin_main.xml" value="0.3463541666666667" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.3463541666666667" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.3463541666666667" />
+        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.3463541666666667" />
+        <entry key="scheduledpickup/src/main/res/drawable/ic_baseline_person_24.xml" value="0.246" />
+        <entry key="scheduledpickup/src/main/res/layout/fragment_address_detail.xml" value="0.3463541666666667" />
+        <entry key="scheduledpickup/src/main/res/layout/fragment_schedule_pickup.xml" value="0.3463541666666667" />
       </map>
     </option>
   </component>

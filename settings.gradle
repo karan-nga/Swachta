@@ -8,3 +8,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Swachta"
 include ':app'
+include ':scheduledpickup'
