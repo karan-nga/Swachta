@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scedulenavigation"
+    app:startDestination="@id/schedulePickup">
+
+    <fragment
+        android:id="@+id/schedulePickup"
+        android:name="com.codingwithme.currentlocation.SchedulePickup"
+        android:label="fragment_schedule_pickup"
+        tools:layout="@layout/fragment_schedule_pickup" >
+        <action
+            android:id="@+id/action_schedulePickup_to_addressDetail"
+            app:destination="@id/addressDetail" />
+    </fragment>
+    <fragment
+        android:id="@+id/addressDetail"
+        android:name="com.codingwithme.currentlocation.AddressDetailFrag"
+        android:label="fragment_address_detail"
+        tools:layout="@layout/fragment_address_detail" >
+        <action
+            android:id="@+id/action_addressDetail_to_schedulePickup"
+            app:destination="@id/schedulePickup" />
+    </fragment>
+</navigation>
