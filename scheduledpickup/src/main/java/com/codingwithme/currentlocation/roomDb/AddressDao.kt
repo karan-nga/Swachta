@@ -10,15 +10,15 @@ interface AddressDao {
     /* @Query("SELECT * FROM student_table WHERE uid IN (:userIds)")
      fun loadAllByIds(userIds: IntArray): List<Student>*/
 
-    @Query("SELECT * FROM address_table WHERE id LIKE :isd")
-    suspend fun findByRoll(isd: Int): AddressDetail
+//    @Query("SELECT * FROM address_table WHERE id =1")
+//     fun findByRoll(isd: Int): AddressDetail
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(address: AddressDetail)
+     fun insert(address: AddressDetail)
 
     @Delete
-    suspend fun delete(address: AddressDetail)
+     fun delete(address: AddressDetail)
 
     @Query("DELETE FROM address_table")
-    suspend fun deleteAll()
+     fun deleteAll()
 }

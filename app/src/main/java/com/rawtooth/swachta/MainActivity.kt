@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
+import com.codingwithme.currentlocation.roomDb.AddressDetail
 import com.easyvolley.NetworkClient
 import com.rawtooth.swachta.databinding.ActivityMainBinding
 import com.rawtooth.swachta.user.user_detail
@@ -62,6 +63,10 @@ class MainActivity : AppCompatActivity() {
     }
     fun user(menuItem: MenuItem){
         startActivity(Intent(this,user_detail::class.java))
+    }
+
+    fun schedule(item: MenuItem) {
+        startActivity(Intent(this,com.codingwithme.currentlocation.MainActivity::class.java))
     }
 
 }

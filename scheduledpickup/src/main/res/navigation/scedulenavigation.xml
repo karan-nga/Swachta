@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/scedulenavigation"
-    app:startDestination="@id/schedulePickup">
+    app:startDestination="@id/addressDetail">
 
     <fragment
         android:id="@+id/schedulePickup"

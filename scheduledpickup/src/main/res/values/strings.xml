@@ -2,4 +2,5 @@
     <string name="app_name">Current Location</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="lorem_ipsum_dolor_sit_amet_consectetur_adipiscing_elit_etiam_a_augue_non_velit_rutrum_feugiat_etiam_aliquet_eros_ut_elit_consectetur_eget_sodales_sem_tristique_ut_elit_mi_porttitor_et_quam_et_vestibulum_pretium_velit_nam_bibendum_efficitur_metus_at_tincidunt_odio_malesuada_quis_proin_non_interdum_nisi_duis_ullamcorper_interdum_nibh_quisque_lobortis_dignissim_rutrum_sed_semper_magna_leo_sit_amet_finibus_velit_finibus_eget">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam a augue non velit rutrum feugiat. Etiam aliquet eros ut elit consectetur, eget sodales sem tristique. Ut elit mi, porttitor et quam et, vestibulum pretium velit. Nam bibendum efficitur metus, at tincidunt odio malesuada quis. Proin non interdum nisi. Duis ullamcorper interdum nibh. Quisque lobortis dignissim rutrum. Sed semper magna leo, sit amet finibus velit finibus eget.</string>
 </resources>

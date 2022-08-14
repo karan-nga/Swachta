@@ -7,13 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.codingwithme.currentlocation.databinding.FragmentAddressDetailBinding
 import com.codingwithme.currentlocation.roomDb.AddressDetail
 import com.codingwithme.currentlocation.roomDb.AppDataBase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-
 
 class AddressDetailFrag : Fragment() {
 private var _binding:FragmentAddressDetailBinding?=null
@@ -31,6 +31,7 @@ private var _binding:FragmentAddressDetailBinding?=null
         super.onViewCreated(view, savedInstanceState)
         binding.addressSaveBtn.setOnClickListener{
             saveData()
+            findNavController().navigate(R.id.action_addressDetail_to_schedulePickup)
         }
     }
 
