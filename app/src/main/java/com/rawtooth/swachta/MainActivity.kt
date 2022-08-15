@@ -3,10 +3,9 @@ package com.rawtooth.swachta
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
-import com.codingwithme.currentlocation.roomDb.AddressDetail
+import com.codingwithme.currentlocation.addressshow.AddressDeatils
 import com.easyvolley.NetworkClient
 import com.rawtooth.swachta.databinding.ActivityMainBinding
 import com.rawtooth.swachta.user.user_detail
@@ -41,6 +40,9 @@ class MainActivity : AppCompatActivity() {
         carsualView=mainBinding.carouselView
         carsualView!!.pageCount=imageArray.size
         carsualView!!.setImageListener(imageListner)
+        mainBinding.gtoother.setOnClickListener {
+            startActivity(Intent(this,AddressDeatils::class.java))
+        }
     }
     var imageListner=ImageListener{position, imageView -> imageView.setImageResource(imageArray[position]) }
 
@@ -65,8 +67,6 @@ class MainActivity : AppCompatActivity() {
         startActivity(Intent(this,user_detail::class.java))
     }
 
-    fun schedule(item: MenuItem) {
-        startActivity(Intent(this,com.codingwithme.currentlocation.MainActivity::class.java))
-    }
+
 
 }

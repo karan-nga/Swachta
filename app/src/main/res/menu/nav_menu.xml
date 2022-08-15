@@ -7,7 +7,7 @@
     android:icon="@drawable/ic_baseline_home_24"
     />
     <item
-        android:onClick="schedule"
+
         android:title="Schedule Waste"
         android:icon="@drawable/waste"
         />
