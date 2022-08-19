@@ -4,4 +4,14 @@
     <string name="close">close</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="waste_array">
+        <item>-Select-</item>
+        <item>Metal</item>
+        <item>Rubber</item>
+        <item>Plastic</item>
+        <item>Cardboard</item>
+        <item>Trash</item>
+        <item>Glass</item>
+        <item>Paper</item>
+    </string-array>
 </resources>

@@ -15,7 +15,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Swachta"
         tools:targetApi="n">
-
+        <activity
+            android:name=".ProceedPickupMain"
+            android:exported="false" />
+        <activity
+            android:name=".MainPickupScheduled"
+            android:exported="false" />
         <activity
             android:name=".user.user_detail"
             android:exported="false" />

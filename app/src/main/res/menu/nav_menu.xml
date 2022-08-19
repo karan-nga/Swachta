@@ -6,11 +6,7 @@
     android:title="Home"
     android:icon="@drawable/ic_baseline_home_24"
     />
-    <item
 
-        android:title="Schedule Waste"
-        android:icon="@drawable/waste"
-        />
     <item
         android:onClick="user"
         android:title="User"
