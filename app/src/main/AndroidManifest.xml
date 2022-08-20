@@ -4,6 +4,7 @@
     package="com.rawtooth.swachta">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
@@ -15,6 +16,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Swachta"
         tools:targetApi="n">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_api" />
+
         <activity
             android:name=".ProceedPickupMain"
             android:exported="false" />
@@ -27,13 +32,14 @@
         <activity
             android:name=".Splash"
             android:exported="true">
-            -
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".schedule.FetchLocation"
+            android:exported="true"/>
         <activity
             android:name=".Login"
             android:exported="true" />

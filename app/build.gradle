@@ -5,12 +5,12 @@ plugins {
 }
 
 android {
-    compileSdk 33
+    compileSdk 32
 
     defaultConfig {
         applicationId "com.rawtooth.swachta"
         minSdk 21
-        targetSdk 33
+        targetSdk 32
         versionCode 1
         versionName "1.0"
 
@@ -36,6 +36,8 @@ android {
 }
 
 dependencies {
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
+    implementation 'com.google.android.gms:play-services-location:20.0.0'
     def lottieVersion = "3.4.0"
     implementation "com.airbnb.android:lottie:$lottieVersion"
     implementation 'com.google.android.material:material:1.6.1'
@@ -52,7 +54,7 @@ dependencies {
     implementation 'com.synnapps:carouselview:0.1.5'
     implementation "androidx.appcompat:appcompat:$rootProject.appCompatVersion"
     implementation "androidx.activity:activity-ktx:$rootProject.activityVersion"
-
+    implementation 'com.google.android.material:material:1.6.1'
 
     // Room components
     implementation "androidx.room:room-ktx:$rootProject.roomVersion"
@@ -69,6 +71,7 @@ dependencies {
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.coroutines"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutines"
     implementation project(":scheduledpickup")
+    implementation 'com.skyfishjy.ripplebackground:library:1.0.1'
 
 
 }

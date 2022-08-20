@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".schedule.FetchLocation">
+
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/pickdate" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/getaddress"
+        android:layout_width="wrap_content"
+     android:layout_below="@id/pickdate"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Get Address"
+        android:textSize="23sp"
+        app:cornerRadius="20dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/pickdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="selectDate"
+        android:layout_centerInParent="true"
+        android:text="Schedule Pickup"
+        android:textSize="23sp"
+        app:cornerRadius="20dp" />
+
+    <TextView
+        android:id="@+id/tvAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/getaddress"
+       android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:text="Address: xyz" />
+
+    <ProgressBar
+        android:id="@+id/loader"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_below="@id/tvAddress"
+        android:indeterminateTint="@color/colorPrimaryDark"
+        />
+
+    <TextView
+        android:id="@+id/dateTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/loader"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text=""
+        android:textAlignment="center"
+        android:textColor="#DF3D3D"
+        android:textSize="26sp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:padding="5dp"
+        android:text="Done"
+        android:textSize="24sp"
+        app:cornerRadius="20dp" />
+
+</RelativeLayout>

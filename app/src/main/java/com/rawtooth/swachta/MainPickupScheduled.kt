@@ -8,6 +8,7 @@ import android.view.WindowManager
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.rawtooth.swachta.databinding.ActivityMainPickupScheduledBinding
+import com.rawtooth.swachta.schedule.FetchLocation
 
 class MainPickupScheduled : AppCompatActivity(),AdapterView.OnItemSelectedListener {
     var cost = 0.0
@@ -202,7 +203,7 @@ class MainPickupScheduled : AppCompatActivity(),AdapterView.OnItemSelectedListen
 
     fun goToProceed(view: View) {
         waste()
-        val intent = Intent(this, ProceedPickupMain::class.java)
+        val intent = Intent(this, FetchLocation::class.java)
         intent.putExtra("waste_materials", waste)
         val costStr = cost.toString()
         intent.putExtra("cost_of_waste", costStr)
