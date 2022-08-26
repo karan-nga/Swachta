@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="#74A594"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".schedule.NewPickup">
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="100dp"
+    android:textSize="40dp"
+    android:textColor="@color/black"
+    android:textStyle="bold"
+    android:layout_gravity="center"
+    android:text="Discover"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select the type of waste you have"
+        android:layout_marginTop="30dp"
+        android:textSize="18dp"
+        android:textColor="@color/black"
+        android:layout_gravity="center"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/type1"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+           app:cornerRadius="20dp"
+            android:backgroundTint="#7CB595"
+            android:text="Organic waste"
+            android:textAllCaps="false"
+            android:layout_marginBottom="22dp"/>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/type2"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:text="Plastic waste"
+            android:backgroundTint="#7CB595"
+            android:textAllCaps="false"
+            app:cornerRadius="20dp"
+            android:layout_marginBottom="22dp"/>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/type3"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            app:cornerRadius="20dp"
+            android:backgroundTint="#7CB595"
+            android:text="Glass waste"
+            android:textAllCaps="false"
+            android:layout_marginBottom="22dp"/>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/type4"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            app:cornerRadius="20dp"
+            android:backgroundTint="#7CB595"
+            android:text="Bio waste"
+            android:textAllCaps="false"
+            android:layout_marginBottom="22dp"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/otherType"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/black"
+        android:textAllCaps="false"
+        app:cornerRadius="20dp"
+        android:backgroundTint="@color/white"
+        android:layout_marginTop="22dp"
+        android:text="Any other type of waste please click here"/>
+    </LinearLayout>
+</LinearLayout>

@@ -1,10 +1,11 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.Swachta" parent="Theme.MaterialComponents.Light.NoActionBar">
-
+        <item name="android:splitMotionEvents">false</item>
+        <item name="android:windowEnableSplitTouch">false</item>
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#2abb9b</item>
-        <item name="colorPrimaryVariant">#3490dc</item>
+        <item name="colorPrimary">#7CB595</item>
+        <item name="colorPrimaryVariant">#7CB595</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>

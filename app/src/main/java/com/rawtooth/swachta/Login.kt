@@ -19,9 +19,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-
+var uid:String?=null
+var tokn:String?=null
 class Login : AppCompatActivity(), View.OnClickListener {
-
+    lateinit var tokenManager: TokenManager
     lateinit var loginBinding:ActivityLoginBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,9 +39,9 @@ class Login : AppCompatActivity(), View.OnClickListener {
 
     private fun onSave(name: String, password: String) {
 
-
+            tokenManager=TokenManager(this)
             val body = Gson().toJson(LoginPost(name,password))
-            NetworkClient.post("http://192.168.0.145:9090/generatetoken")
+            NetworkClient.post("${Constant.baseurl}generatetoken")
                 .addHeader("Content-Type", "application/json")
                 .addHeader("Content-Length", Integer.toString(body.length))
                 .addHeader("Accept", "application/json")
@@ -57,7 +58,9 @@ class Login : AppCompatActivity(), View.OnClickListener {
 
                         if (t != null) {
                             Log.d("code",  t.toString())
-
+                            tokenManager.saveToken(t.token)
+                            tokn=t.token
+                               uid= t.user.userId.toString()
                            if(t.user.authorities[0].authority=="USER"){
                                startActivity(Intent(this@Login,MainActivity::class.java))
 

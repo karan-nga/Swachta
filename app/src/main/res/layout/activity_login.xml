@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@drawable/appback"
     tools:context=".Login">
 
     <TextView
@@ -18,7 +18,7 @@
         android:fontFamily="@font/sourcesansprobold"
         android:gravity="center"
         android:text="Log in"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="45dp"
         android:textStyle="bold" />
 
@@ -36,8 +36,8 @@
         android:drawablePadding="20dp"
         android:hint="Username"
         android:padding="20dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white" />
+        android:textColor="@color/black"
+        android:textColorHint="@color/black" />
 
     <EditText
         android:id="@+id/password"
@@ -54,8 +54,8 @@
         android:hint="Password"
         android:inputType="textPassword"
         android:padding="20dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white" />
+        android:textColor="@color/black"
+        android:textColorHint="@color/black" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/loginbtn"
@@ -67,14 +67,16 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
-        android:backgroundTint="@color/design_default_color_secondary"
+        android:backgroundTint="@color/white"
         android:fontFamily="@font/sourcesansproregular"
         android:text="Login"
+        app:cornerRadius="10dp"
         android:textAllCaps="false"
         android:textColor="@color/black"
         android:textSize="18sp" />
 
     <TextView
+
         android:id="@+id/forgotpass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -82,11 +84,11 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:fontFamily="@font/sourcesansproregular"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
+        android:fontFamily="@font/sourcesansproregular"
         android:text="Forgot password?"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="14dp" />
 
 
@@ -95,10 +97,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/forgotpass"
         android:layout_centerHorizontal="true"
-        android:fontFamily="@font/sourcesansproregular"
         android:layout_marginTop="31dp"
-        android:text="Don't have an account?Register"
-        android:textColor="@color/white"
+        android:fontFamily="@font/sourcesansproregular"
+        android:text="@string/txt_no_account_signup"
+        android:textColor="@color/black"
         android:textSize="18dp"
         android:textStyle="bold" />
 

@@ -8,16 +8,15 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.easyvolley.Callback
-
 import com.easyvolley.EasyVolleyError
 import com.easyvolley.EasyVolleyResponse
 import com.easyvolley.NetworkClient
-import com.rawtooth.swachta.databinding.ActivityRegisterBinding
 import com.google.gson.Gson
+import com.rawtooth.swachta.databinding.ActivityRegisterBinding
 
 
 class register : AppCompatActivity(), View.OnClickListener {
-   var value:Int = 0
+    var value: Int = 0
     lateinit var response: EasyVolleyResponse
     lateinit var registerBind: ActivityRegisterBinding
 
@@ -30,58 +29,61 @@ class register : AppCompatActivity(), View.OnClickListener {
         val email = registerBind.email.text.toString().trim()
         val contact = registerBind.contact.text.toString().trim()
         val pass = registerBind.password.text.toString().trim()
-
-
     }
     //http://localhost:9090
-
     private fun onSave(name: String, email: String, contact: String, pass: String) {
 
-        val body = Gson().toJson(RegisterPost(name,email,pass,contact))
-        NetworkClient.post("http://192.168.1.95:9090/user/")
+        val body = Gson().toJson(RegisterPost(name, email, pass, contact))
+        NetworkClient.post("${Constant.baseurl}user/")
             .addHeader("Content-Type", "application/json")
             .addHeader("Content-Length", Integer.toString(body.length))
             .addHeader("Accept", "application/json")
             .setRequestBody(body)
             .setCallback(object : Callback<String> {
                 override fun onSuccess(t: String?, response: EasyVolleyResponse?) {
-                    Log.d("code",  t.toString())
-                    if(response!=null){
-                    if(response.mStatusCode==200){
-              Toast.makeText(this@register,"Sucessfull",Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this@register,Login::class.java))
-            }
-            else if(response.mStatusCode==500){
-                Toast.makeText(this@register, "Your are already registered", Toast.LENGTH_SHORT).show()
-               startActivity(Intent(this@register,MainActivity::class.java))
-            }
-            else{
-                Toast.makeText(this@register, "Request Failed", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this@register,MainActivity::class.java))
-            }
+                    Log.d("code", t.toString())
+                    if (response != null) {
+                        if (response.mStatusCode == 200) {
+                            Toast.makeText(
+                                this@register,
+                                "Successfully Registered",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            startActivity(Intent(this@register, Login::class.java))
+                        } else if (response.mStatusCode == 500) {
+                            Toast.makeText(
+                                this@register,
+                                "Your are already registered",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            startActivity(Intent(this@register, MainActivity::class.java))
+                        } else {
+                            Toast.makeText(this@register, "Request Failed", Toast.LENGTH_SHORT)
+                                .show()
+                            startActivity(Intent(this@register, MainActivity::class.java))
                         }
-
-
-
-
                     }
+
+
+                }
 
                 override fun onError(error: EasyVolleyError?) {
-                    value=error!!.mStatusCode
-                        Log.e("code", " Error" + error!!.mStatusCode.toString())
-                    if(response.mStatusCode==500){
-                        Toast.makeText(this@register, "Your are already registered", Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(this@register,MainActivity::class.java))
+                    value = error!!.mStatusCode
+                    Log.e("code", " Error" + error!!.mStatusCode.toString())
+                    if (response.mStatusCode == 500) {
+                        Toast.makeText(
+                            this@register,
+                            "Your are already registered",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        startActivity(Intent(this@register, MainActivity::class.java))
                     }
 
-                    };
-
+                };
 
 
             }
             ).execute()
-
-
 
 
 //        val client = OkHttpClient.Builder()
@@ -114,7 +116,7 @@ class register : AppCompatActivity(), View.OnClickListener {
         val check: Boolean = vali(name, email, contact, pass, confPass)
         if (check) {
             onSave(name, email, contact, pass)
-            registerBind.loginscreen.text=value.toString()
+            registerBind.loginscreen.text = value.toString()
 //            if(value==200){
 //                Toast.makeText(this, "Successfully registered", Toast.LENGTH_SHORT).show()
 //                startActivity(Intent(this,Login::class.java))

@@ -3,6 +3,7 @@ package com.rawtooth.swachta.schedule
 import android.Manifest
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Intent
 import android.content.IntentSender
 import android.content.pm.PackageManager
 import android.location.Address
@@ -11,11 +12,17 @@ import android.location.Location
 import android.os.Bundle
 import android.os.Looper
 import android.text.format.DateFormat
+import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.fragment.app.FragmentActivity
+import com.easyvolley.Callback
+import com.easyvolley.EasyVolleyError
+import com.easyvolley.EasyVolleyResponse
+import com.easyvolley.NetworkClient
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -24,6 +31,8 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.tasks.OnSuccessListener
+import com.google.gson.Gson
+import com.rawtooth.swachta.*
 import com.rawtooth.swachta.R
 import com.rawtooth.swachta.databinding.ActivityFetchLocationBinding
 import java.util.*
@@ -41,7 +50,7 @@ class FetchLocation : FragmentActivity(),OnMapReadyCallback,DatePickerDialog.OnD
     var day = 0;var month:Int = 0;var year:Int = 0; var hours:Int = 0;var minute:Int = 0
     var dayFinal = 0; var monthFinal:Int = 0; var yearFinal:Int = 0;var hoursFinal:Int = 0; var minuteFinal:Int = 0
     var dateFinal: String? = null; var timeFinal:kotlin.String? = null
-
+    lateinit var tokenManager: TokenManager
 
     companion object {
         private val REQUEST_PERMISSION_REQUEST_CODE = 2020
@@ -51,6 +60,10 @@ class FetchLocation : FragmentActivity(),OnMapReadyCallback,DatePickerDialog.OnD
         super.onCreate(savedInstanceState)
         binding = ActivityFetchLocationBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val message = intent.getStringExtra("message_key")
+        binding.wasteDeatils.setText(message)
+
+
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment!!.getMapAsync(this)
         mapView = mapFragment.view
@@ -73,8 +86,56 @@ class FetchLocation : FragmentActivity(),OnMapReadyCallback,DatePickerDialog.OnD
             }
 
         }
+        tokenManager= TokenManager(this)
+        binding.finalDoneSchedule.setOnClickListener{
+            finalpickUpSchedule()
+        }
 
 
+    }
+
+    private fun finalpickUpSchedule() {
+        val waste=binding.wasteDeatils.text.toString()
+        val addresss=binding.tvAddress.text.toString()
+        val time=" "
+        val date=binding.dateTV.text.toString()
+        if(!waste.isEmpty()&&!addresss.isEmpty()&&!date.isEmpty()){
+            binding.finalDoneSchedule.isVisible=false
+            binding.apidata.isVisible=true
+            Toast.makeText(this@FetchLocation,"Please wait",Toast.LENGTH_LONG).show()
+            onCheck(waste,addresss,time,date, uid)
+        }
+        else{
+            Toast.makeText(this,"Please enter all details",Toast.LENGTH_SHORT).show()
+            binding.finalDoneSchedule.isVisible=true
+            binding.apidata.isVisible=false
+        }
+
+    }
+
+    private fun onCheck(waste: String, addresss: String, time: String, date: String, uid: String?,) {
+        tokenManager=TokenManager(this)
+        val body= Gson().toJson(ScheduleModel(date,addresss,time, "1",waste))
+        NetworkClient.post("${Constant.baseurl}waste/schedule-pickUp")
+            .addHeader("Content-Type", "application/json")
+            .addHeader("Content-Length", Integer.toString(body.length))
+            .addHeader("Authorization", "Bearer ${tokenManager.getToken()}")
+            .addHeader("Accept", "application/json")
+            .setRequestBody(body)
+            .setCallback(object :Callback<String>{
+                override fun onSuccess(t: String?, response: EasyVolleyResponse?) {
+                    if(response!=null){
+                        Log.d("code",response.toString())
+                        startActivity(Intent(this@FetchLocation,SuccessScreenPickup::class.java))
+                    }
+                }
+
+                override fun onError(error: EasyVolleyError?) {
+                    Log.e("code",error.toString())
+                    startActivity(Intent(this@FetchLocation,SuccessScreenPickup::class.java))
+                }
+
+            }).execute()
     }
 
     private fun getAddress() {
@@ -109,15 +170,12 @@ class FetchLocation : FragmentActivity(),OnMapReadyCallback,DatePickerDialog.OnD
                         .removeLocationUpdates(this)
                     if (locationResult != null && locationResult.locations.size > 0){
                         var locIndex = locationResult.locations.size-1
-
                         var latitude = locationResult.locations.get(locIndex).latitude
                         var longitude = locationResult.locations.get(locIndex).longitude
-
-
                         addresses = geocoder.getFromLocation(latitude,longitude,1)!!
 
                         var address:String = addresses[0].getAddressLine(0)
-                        binding.tvAddress.text = address
+                        binding.tvAddress.setText(address)
                         if (binding.tvAddress != null){
                             binding.loader.visibility = View.GONE
                         }
@@ -287,7 +345,7 @@ class FetchLocation : FragmentActivity(),OnMapReadyCallback,DatePickerDialog.OnD
         minuteFinal = minute
         dateFinal = "$dayFinal/$monthFinal/$yearFinal"
         timeFinal = "$hoursFinal:$minuteFinal"
-        binding.dateTV.text="Scheduling Pickup at $hoursFinal:$minuteFinal, on $dayFinal/$monthFinal/$yearFinal."
+        binding.dateTV.setText("Scheduling Pickup at $hoursFinal:$minuteFinal, on $dayFinal/$monthFinal/$yearFinal.")
     }
 
     fun selectDate(view: View) {

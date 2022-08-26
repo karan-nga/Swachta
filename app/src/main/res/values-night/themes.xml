@@ -2,8 +2,10 @@
     <!-- Base application theme. -->
     <style name="Theme.Swachta" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#2abb9b</item>
-        <item name="colorPrimaryVariant">#3490dc</item>
+        <item name="android:splitMotionEvents">false</item>
+        <item name="android:windowEnableSplitTouch">false</item>
+        <item name="colorPrimary">#73A593</item>
+        <item name="colorPrimaryVariant">#7CB595</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>

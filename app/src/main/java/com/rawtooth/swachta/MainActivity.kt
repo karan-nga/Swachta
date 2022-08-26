@@ -1,13 +1,16 @@
 package com.rawtooth.swachta
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.browser.customtabs.CustomTabsIntent
 
 import com.easyvolley.NetworkClient
 import com.rawtooth.swachta.databinding.ActivityMainBinding
+import com.rawtooth.swachta.schedule.NewPickup
 import com.rawtooth.swachta.user.user_detail
 import com.synnapps.carouselview.CarouselView
 import com.synnapps.carouselview.ImageListener
@@ -41,7 +44,17 @@ class MainActivity : AppCompatActivity() {
         carsualView!!.pageCount=imageArray.size
         carsualView!!.setImageListener(imageListner)
         mainBinding.pickupCard.setOnClickListener{
-            startActivity(Intent(this,MainPickupScheduled::class.java))
+            startActivity(Intent(this,NewPickup::class.java))
+        }
+        mainBinding.classify.setOnClickListener {
+            val builder=CustomTabsIntent.Builder()
+            val customTabsIntent=builder.build()
+            customTabsIntent.launchUrl(this, Uri.parse("https://aniass-waste-app-waste-rkm4o1.streamlitapp.com/"))
+        }
+        mainBinding.dwtrw.setOnClickListener {
+            val builder=CustomTabsIntent.Builder()
+            val customTabsIntent=builder.build()
+            customTabsIntent.launchUrl(this, Uri.parse("https://www.conserve-energy-future.com/simple-and-easy-ways-go-zero-waste-at-home.php"))
         }
     }
     var imageListner=ImageListener{position, imageView -> imageView.setImageResource(imageArray[position]) }
