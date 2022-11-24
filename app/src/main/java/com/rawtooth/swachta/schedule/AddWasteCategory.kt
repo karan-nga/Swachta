@@ -64,8 +64,7 @@ class AddWasteCategory : AppCompatActivity(), View.OnClickListener {
                 }
 
                 override fun onFailure(call: Call<String>, t: Throwable) {
-                    t.mess+age?.let { binding.layoutRoot.snackbar(it) }
-                    t.message?.let { Log.e("code", it) }
+                    Log.e("code",t.message.toString())
                 }
             })
     }
