@@ -75,4 +75,7 @@ dependencies {
     implementation "androidx.browser:browser:1.4.0"
 
 
+    implementation 'com.squareup.retrofit2:converter-scalars:2.9.0'
+
+
 }

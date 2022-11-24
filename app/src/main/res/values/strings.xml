@@ -16,4 +16,9 @@
         <item>Paper</item>
     </string-array>
     <string name="google_maps_api">AIzaSyD3_5N71KuhdMTSo_HCMS1qSuF2mh-lVUs</string>
+    <string-array name="ngotype">
+        <item>Disposal </item>
+        <item>Recycle</item>
+        <item>Resuable waste</item>
+    </string-array>
 </resources>

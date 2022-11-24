@@ -10,6 +10,8 @@ import androidx.browser.customtabs.CustomTabsIntent
 
 import com.easyvolley.NetworkClient
 import com.rawtooth.swachta.databinding.ActivityMainBinding
+import com.rawtooth.swachta.schedule.AddWasteCategory
+import com.rawtooth.swachta.schedule.FetchLocation
 import com.rawtooth.swachta.schedule.NewPickup
 import com.rawtooth.swachta.user.user_detail
 import com.synnapps.carouselview.CarouselView

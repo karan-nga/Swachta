@@ -16,6 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Swachta"
         tools:targetApi="n">
+        <activity android:name=".schedule.AddWasteCategory"
+            android:exported="true"/>
         <activity
             android:name=".schedule.SuccessScreenPickup"
             android:exported="false" />
